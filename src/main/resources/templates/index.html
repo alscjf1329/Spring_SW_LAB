@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swlab - 경성대학교 소프트웨어학과 연구실</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4caf50;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 94%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .container input[type="submit"],
+        .container input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            border: none;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .container input[type="submit"]:hover,
+        .container input[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        .container .signup-btn {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function openSignupWindow() {
+            window.open("signup.html", "회원가입", "width=500,height=500");
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>SW LAB</h1>
+    <h2>로그인</h2>
+    <form method="post">
+        <input type="text" name="id" placeholder="사용자명" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <input type="submit" value="로그인">
+    </form>
+    <div class="signup-btn">
+        <input type="button" value="회원가입" onclick="openSignupWindow()">
+    </div>
+</div>
+</body>
+</html>

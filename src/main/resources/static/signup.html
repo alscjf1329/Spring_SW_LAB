@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>swlab - 회원 가입</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f3f3;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #4caf50;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 94%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      border: none;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>회원 가입</h1>
+  <form>
+    <label for="username">사용자명</label>
+    <input type="text" id="username" required>
+    <label for="password">비밀번호</label>
+    <input type="password" id="password" required>
+    <label for="confirm-password">비밀번호 확인</label>
+    <input type="password" id="confirm-password" required>
+    <label for="pin">인증번호</label>
+    <input type="password" id="pin" required>
+    <input type="submit" value="가입하기">
+  </form>
+</div>
+</body>
+</html>
