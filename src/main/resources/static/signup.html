@@ -38,14 +38,14 @@
 
     .container input[type="text"],
     .container input[type="password"] {
-      width: 100%;
+      width: 94%;
       padding: 10px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
 
-    .container input[type="submit"] {
+    .container button[type="button"] {
       width: 100%;
       padding: 10px;
       background-color: #4caf50;
@@ -56,7 +56,7 @@
       border-radius: 4px;
     }
 
-    .container input[type="submit"]:hover {
+    .container button[type="button"]:hover {
       background-color: #45a049;
     }
 
@@ -67,23 +67,46 @@
       font-weight: bold;
     }
   </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const form = document.querySelector('form');
-      const successMessage = document.querySelector('.success-message');
+      const btn = document.getElementById('signup');
 
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        // 여기서 백엔드로 회원가입 요청을 보내고 응답을 처리합니다.
+      btn.addEventListener('click', function (btn) {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        const pin = document.getElementById('pin').value;
+        // 회원가입 요청 데이터
+        const data = {
+          "username": username,
+          "password": password,
+          "confirmPassword": confirmPassword,
+          "pin": pin
+        };
 
-        // 가상의 응답 (백엔드에서 'true'가 반환되었다고 가정)
-        console.log(event.)
-        const response = true;
+        console.log(data)
 
-        if (response === true) {
-          form.style.display = 'none';
-          successMessage.style.display = 'block';
-        }
+        fetch("/signup", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+                .then(response => response.json())
+                .then(jsonData => {
+                  if (jsonData){
+                    alert("회원가입 성공")
+                    window.close()
+                  }
+                  else {
+                    alert("회원가입 실패")
+                  }
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                });
       });
     });
   </script>
@@ -91,7 +114,7 @@
 <body>
 <div class="container">
   <h1>회원 가입</h1>
-  <form method="post" action="/signup">
+  <form>
     <label for="username">사용자명</label>
     <input type="text" name="username" id="username" required>
     <label for="password">비밀번호</label>
@@ -100,9 +123,8 @@
     <input type="password" name="confirm_password" id="confirm_password" required>
     <label for="pin">인증번호</label>
     <input type="password" name="pin" id="pin" required>
-    <input type="submit" value="가입하기">
+    <button id="signup" type="button">가입하기</button>
   </form>
-  <div class="success-message" style="display: none;">회원 가입이 완료되었습니다.</div>
 </div>
 </body>
 </html>

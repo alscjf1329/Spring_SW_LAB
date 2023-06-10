@@ -68,16 +68,6 @@
             text-align: center;
         }
     </style>
-    <script>
-        function openSignupWindow() {
-            window.open("signup.html", "회원가입", "width=500,height=500");
-        }
-
-        function showCompletionMessage() {
-            window.opener.postMessage("회원 가입이 완료되었습니다.", window.location.origin);
-            window.close();
-        }
-    </script>
 </head>
 <body>
 <div class="container">
@@ -93,13 +83,9 @@
     </div>
 </div>
 <script>
-    window.addEventListener('message', function (event) {
-        if (event.origin === window.location.origin) {
-            if (event.data === 'signupSuccess') {
-                showCompletionMessage();
-            }
-        }
-    });
+    function openSignupWindow() {
+        window.open("signup.html", "회원가입", "width=500,height=500");
+    }
 </script>
 </body>
 </html>
