@@ -15,7 +15,21 @@ val sessionMap = mutableMapOf<String, MutableMap<String, String>>()
 @Controller
 class LoginController(@Autowired val memberRepository: MemberRepository) {
     @GetMapping("/")
-    fun getLogin(): String {
+    fun getLogin(req: HttpServletRequest): String {
+        val cookies = req.cookies
+        if (cookies!=null){
+            val sk = cookies.filter { it.name=="sessionKey" }.first().value
+
+            val loginState = sessionMap[sk]?.get("login")
+
+            if (loginState.isNullOrBlank()){
+                return "index"
+            }
+            if (loginState!="true"){
+                return "index"
+            }
+            return "redirect:/home"
+        }
         return "index"
     }
 
@@ -38,7 +52,7 @@ class LoginController(@Autowired val memberRepository: MemberRepository) {
 }
 
 @Controller
-class HomeController(@Autowired val memberRepository: MemberRepository){
+class HomeController(){
     @GetMapping("/home")
     fun getMain(@CookieValue("sessionKey") sk: String): String {
         val loginState = sessionMap[sk]?.get("login")
