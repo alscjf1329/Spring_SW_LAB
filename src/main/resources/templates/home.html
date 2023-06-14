@@ -40,9 +40,76 @@
       font-weight: bold;
       border-radius: 4px;
     }
+
+    .navbar {
+      background-color: #f1f1f1;
+      overflow: hidden;
+      display: flex;
+      align-items: center; /* 수직 가운데 정렬 */
+    }
+
+    .navbar a {
+      color: #4caf50;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .navbar a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .rightContainer {
+      margin-left: auto;
+    }
+    .userName{
+      font-weight: bold;
+    }
+
+    .board {
+      margin-top: 20px;
+    }
+
+    .board h2 {
+      color: #4caf50;
+    }
+
+    .board ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .board li {
+      margin-bottom: 10px;
+    }
+
+    .board a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+
+    .board a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
+<div class="navbar">
+  <a href="/home">Home</a>
+  <a href="#">About</a>
+  <a href="/board">Board</a>
+  <a href="/contact">Contact</a>
+  <a href="/logOut" class="rightContainer">Log out</a>
+  <a href="#" class="userName"  th:text="${userName}"></a>
+</div>
 <div class="container">
   <h1>SW LAB 소개</h1>
   <p>우리 연구실은 경성대학교 소프트웨어학과 소속으로 다양한 소프트웨어 관련 연구를 수행하고 있습니다.</p>
@@ -60,8 +127,7 @@
       <img src="data:image/png;base64,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" alt="img load error">
       </a>
   </div>
-  <p>
-    경성대학교 소프트웨어학과 홈페이지</p>
+  <p>경성대학교 소프트웨어학과 홈페이지 </p>
 </div>
 </body>
 </html>
