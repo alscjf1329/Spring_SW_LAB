@@ -154,12 +154,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const deleteBoardBtn = document.getElementsByClassName('deleteBoardBtn');
-            $.busyLoadSetup({ animation: "fade", background: "rgba(255, 152, 0, 0.86)" , spinner: "cube-grid"});
+            $.busyLoadSetup({ animation: "fade", background: "rgba(76, 175, 80, 0.86)" , spinner: "cube-grid"});
 
             Array.from(deleteBoardBtn).forEach(e =>
                 e.addEventListener('click', function (){
-                const boardId=this.getAttribute('boardId')
-                const writer=this.getAttribute('writerId')
+                const boardId=this.getAttribute('data-board-id')
+                const writer=this.getAttribute('data-writer-id')
                 const data = {
                     "boardId": boardId,
                     "writer": writer
@@ -215,8 +215,8 @@
                 </div>
                 <p class="content" th:text="${board.content}"></p>
                 <div class="buttons">
-                    <button th:boardId="${board.id}" th:writerId="${board.writer}" class="editBoardBtn">수정</button>
-                    <button th:boardId="${board.id}" th:writerId="${board.writer}" class="deleteBoardBtn">삭제</button>
+                    <button th:data-board-id="${board.id}" th:data-writer-id="${board.writer}" class="editBoardBtn">수정</button>
+                    <button th:data-board-id="${board.id}" th:data-writer-id="${board.writer}" class="deleteBoardBtn">삭제</button>
                 </div>
             </li>
         </ul>

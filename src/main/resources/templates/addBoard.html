@@ -114,6 +114,7 @@
     <script>
         // 이벤트 리스너 등록
         document.addEventListener('DOMContentLoaded', function () {
+            $.busyLoadSetup({ animation: "fade", background: "rgba(76, 175, 80, 0.86)" , spinner: "cube-grid"});
             const createBoardBtn = document.getElementById('createBoardBtn');
             createBoardBtn.addEventListener('click', function() {
                 const title = document.getElementById('title').value;
