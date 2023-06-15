@@ -126,8 +126,7 @@ class BoardController(@Autowired val boardRepository: BoardRepository) {
         val result = tryEnteringSite(req, to)
 
         if (to == result) {
-            val username = req.cookies.filter { it.name == "sessionKey" }?.first()?.value
-            model.addAttribute("username", username)
+            model.addAttribute("userName", req.cookies.filter { it.name == "sessionKey" }?.first()?.value)
             model.addAttribute("boardList", boardRepository.findAll().toList())
         }
         return result
