@@ -155,9 +155,9 @@
         document.addEventListener('DOMContentLoaded', function () {
             const deleteBoardBtn = document.getElementsByClassName('deleteBoardBtn');
             $.busyLoadSetup({ animation: "fade", background: "rgba(76, 175, 80, 0.86)" , spinner: "cube-grid"});
-
             Array.from(deleteBoardBtn).forEach(e =>
                 e.addEventListener('click', function (){
+                    if(!window.confirm( "정말 삭제하시겠습니까?" )) return
                 const boardId=this.getAttribute('data-board-id')
                 const writer=this.getAttribute('data-writer-id')
                 const data = {
