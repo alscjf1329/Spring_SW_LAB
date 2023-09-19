@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 
 val pin = "93190048" //이 인증번호를 아는 사람만 가입가능
-
+//test
 @Controller
 class SignInController(@Autowired val memberRepository: MemberRepository) {
     @PostMapping("/signup")
