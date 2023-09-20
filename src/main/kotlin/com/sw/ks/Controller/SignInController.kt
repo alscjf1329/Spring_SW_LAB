@@ -23,7 +23,15 @@ class SignInController(@Autowired val memberRepository: MemberRepository) {
         val confirmPassword = data["confirmPassword"]
         val inputPin = data["pin"]
 
+        if (!inputPin.equals(pin)){ //인증번호가 맞는지 확인.
+            println("pin")
+            return false
+        }
 
+        if (password!=confirmPassword){ //비밀번호와 비밀번호 확인이 동일한지 확인
+            println("password")
+            return false
+        }
 
         val isExist = memberRepository.existsById(username?: "")
         if (isExist){ //이미 존재하는 아이디인지 확인
